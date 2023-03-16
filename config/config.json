@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "trybe",
+    "password": "150921",
+    "database": "database_Lista_de_Tarefas",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "trybe",
+    "password": "150921",
+    "database": "database_Lista_de_Tarefas_Testes",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "trybe",
+    "password": "150921",
+    "database": "database_Lista_de_Tarefas",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
