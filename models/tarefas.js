@@ -1,5 +1,3 @@
-const prazos = require("./prazos");
-
 module.exports = (sequelize, DataTypes) => {
   const Tarefas = sequelize.define('tarefas', {
     id:{
@@ -7,14 +5,15 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
-    tarefas: DataTypes.STRING,
+    tarefa: DataTypes.STRING,
   }, {
     timestamps: false,
     tableName: 'tarefas',
+    underscored: true,
   });
 
   Tarefas.associate = (models) => {
-    Tarefas.hasOne(models.Prazos,
+    Tarefas.hasOne(models.prazos,
       {foreignKey: 'tarefaId', as: 'prazos' });
   }
 

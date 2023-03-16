@@ -11,9 +11,10 @@ module.exports = {
       },
       status: {type: Sequelize.STRING },
       prioridade: {type: Sequelize.STRING},
-      prazo: {type: Sequelize.DATE },
+      prazo: {type: Sequelize.STRING },
       tarefaId: {
         type: Sequelize.INTEGER,
+        foreignKey: true,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         field: 'tarefa_id',
