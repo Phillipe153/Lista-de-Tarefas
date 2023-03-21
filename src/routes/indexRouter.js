@@ -6,6 +6,7 @@ const router = Router()
 router.get('/getAll', controllers.getAllController);
 router.get('/getOne', controllers.getOneController);
 router.post('/post', controllers.postController);
+router.put('/put', controllers.putController);
 router.delete('/delete', controllers.deleteController);
 
 

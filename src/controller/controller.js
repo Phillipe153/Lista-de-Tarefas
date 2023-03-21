@@ -12,7 +12,7 @@ const getAllController= async (req, res, next) => {
 const getOneController= async (req, res, next) => {
     try {
 
-        const id = req.body
+        const {id} = req.body
         const teste = await Services.getOneService(id);
         return res.status(201).json(teste);
     } catch (error) {
@@ -32,6 +32,18 @@ const postController= async (req, res, next) => {
     }
   }
 
+  const putController= async (req, res, next) => {
+    try {
+
+        const { id, status, prioridade, prazo  } = req.body
+        const { message } = await Services.putService(id, status, prioridade, prazo );
+      
+      return res.status(201).json(message);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   const deleteController= async (req, res, next) => {
     try {
 
@@ -44,4 +56,4 @@ const postController= async (req, res, next) => {
     }
   }
 
-module.exports = {getAllController, getOneController, postController, deleteController};
+module.exports = {getAllController, getOneController, postController, putController, deleteController};

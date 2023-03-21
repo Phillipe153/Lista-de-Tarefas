@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha src/tests/**/*.test.js --exit",
+    "test:coverage": "nyc npm run test",  
     "dev": "nodemon src/index.js"
   },
   "repository": {
