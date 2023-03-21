@@ -20,11 +20,11 @@ const getOneController= async (req, res, next) => {
     }
 }
 
-const putController= async (req, res, next) => {
+const postController= async (req, res, next) => {
     try {
 
         const {tarefa, prioridade, prazo } = req.body
-        const { message } = await Services.putService(tarefa,  prioridade, prazo);
+        const { message } = await Services.postService(tarefa,  prioridade, prazo);
       
       return res.status(201).json(message);
     } catch (error) {
@@ -44,4 +44,4 @@ const putController= async (req, res, next) => {
     }
   }
 
-module.exports = {getAllController, getOneController, putController, deleteController};
+module.exports = {getAllController, getOneController, postController, deleteController};

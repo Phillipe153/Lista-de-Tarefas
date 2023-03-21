@@ -34,7 +34,7 @@ const getOneService = async (id) => {
     }
 };
 
-const putService = async (tarefa, prioridade, prazo) => {
+const postService = async (tarefa, prioridade, prazo) => {
     try {
         const novaTarefa =  await tarefas.create({
             tarefa
@@ -74,5 +74,5 @@ const deleteService = async (id) => {
     };
 
 
-module.exports = {getAllService, getOneService, putService, deleteService}
+module.exports = {getAllService, getOneService, postService, deleteService}
 
