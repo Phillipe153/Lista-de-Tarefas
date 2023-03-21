@@ -1,17 +1,34 @@
 require('dotenv/config');
 const { prazos, tarefas } = require('../../models');
 
-const getService = async () => {
+const getAllService = async () => {
     try {
-        const teste = await tarefas.findAll({
+        const tarefas = await tarefas.findAll({
             attributes: {exclude: ['id']},
             include: {
                 model: prazos, as: 'prazos',
                 attributes: {exclude: ['id']}
             }
             });
-        console.log(teste);
-        return teste
+        if (!tarefas[0]) {return  "Nenhuma terafa encontrada!"}
+        return tarefas
+    } catch (error) {
+    console.log(error);
+    }
+};
+
+const getOneService = async (id) => {
+    try {
+        const tarefa = await tarefas .findOne({
+            where: { id },
+            attributes: {exclude: ['id']},
+            include: {
+                model: prazos, as: 'prazos',
+                attributes: {exclude: ['id']}
+            }
+            });
+        if (!tarefa[0]) {return  "Nenhuma terafa encontrada!"}
+        return tarefa
     } catch (error) {
     console.log(error);
     }
@@ -35,5 +52,27 @@ const putService = async (tarefa, prioridade, prazo) => {
         }
     };
 
-module.exports = {getService, putService}
+
+const deleteService = async (id) => {
+    try {
+        const teste = await tarefas.findOne({
+            where: { id }            
+            });
+            console.log(teste);
+
+    if (teste) {
+        teste.destroy();
+        return {message: 'Tarefa excluida com successo'}
+    }
+
+    return {message: 'Tarefa nao encontrada!'}
+
+
+        } catch (error) {
+        console.log(error);
+        }
+    };
+
+
+module.exports = {getAllService, getOneService, putService, deleteService}
 

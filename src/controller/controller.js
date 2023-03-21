@@ -1,8 +1,19 @@
 const Services = require('../service/service');
 
-const getController= async (req, res, next) => {
+const getAllController= async (req, res, next) => {
     try {
-        const teste = await Services.getService();
+        const teste = await Services.getAllService();
+        return res.status(201).json(teste);
+    } catch (error) {
+    next(error);
+    }
+}
+
+const getOneController= async (req, res, next) => {
+    try {
+
+        const id = req.body
+        const teste = await Services.getOneService(id);
         return res.status(201).json(teste);
     } catch (error) {
     next(error);
@@ -21,4 +32,16 @@ const putController= async (req, res, next) => {
     }
   }
 
-module.exports = {getController, putController};
+  const deleteController= async (req, res, next) => {
+    try {
+
+        const { id } = req.body
+        const { message } = await Services.deleteService(id);
+      
+      return res.status(201).json(message);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+module.exports = {getAllController, getOneController, putController, deleteController};
